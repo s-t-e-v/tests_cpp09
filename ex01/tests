@@ -34,4 +34,58 @@ Error
 "2 +"
 Error
 
-#
+# too many operands
+" 2 2 2 + "
+Error
+
+# too many operators
+" 2 2 2 + + +"
+Error
+
+# division by zero
+" 2 0 /"
+Error
+
+# Out of range 1
+" 2147483648 10 -"
+Error
+
+# Out of range 2
+" -2147483649 10 +"
+Error
+
+# int max
+" 2147483647 10 -"
+2147483637
+
+# int min
+" 2147483648 10 +"
+-2147483638
+
+# substraction
+"43 1 -"
+42
+
+# multiplication
+"21 2 *"
+42
+
+# division
+"4 2 /"
+2
+
+# integer division
+"4 10 /"
+0
+
+# subject example 1
+"8 9 * 9 - 9 - 9 - 4 - 1 +"
+42
+
+# subject example 2
+"7 7 * 7 -"
+
+# subject example 3
+"(1 + 1)"
+Error
+
