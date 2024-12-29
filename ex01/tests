@@ -1,0 +1,37 @@
+# single token
+2
+2
+
+# multi input
+2 2
+Error
+
+# two tokens
+"2 2"
+Error
+
+# addition
+"2 2 +"
+4
+
+# 1 operator
+"+"
+Error
+
+# 2 operators
+"+ -"
+Error
+
+# word input
+"salut"
+Error
+
+# letter input
+"h"
+Error
+
+# incomplete addition
+"2 +"
+Error
+
+#
