@@ -89,3 +89,95 @@ Error
 "(1 + 1)"
 Error
 
+# complex expression 1: 2 + 2 - 3 * (3 + 10 / 2) * 5 - 1 [normal notation]
+"2 2 3 3 10 2 / + 5 * * - 1 - +"
+-117
+
+# normal notation
+2 + 2
+Error
+
+
+# Single large operand
+"99999999"
+99999999
+
+# Mixed operators
+"5 1 2 + 4 * + 3 -"
+14
+
+# Complex expression 2: (10 + 2) * (5 - 3) + 8 [normal notation]
+"10 2 + 5 3 - * 8 +"
+28
+
+# Complex expression 3: 5 * (6 - (3 + 1)) + 10 [normal notation]
+"5 6 3 1 + - * 10 +"
+20
+
+# Nested operations
+"2 3 + 5 4 + *"
+45
+
+# Multiple operations with zero
+"0 0 + 1 2 + *"
+0
+
+# Excessive spaces between tokens
+"  3  5  + "
+8
+
+# Non-numeric token
+"2 A +"
+Error
+
+# Mixed valid and invalid tokens
+"2 2 + hello"
+Error
+
+# Unary operator
+"-1"
+-1
+
+# Invalid operator placement
+"3 + + 5"
+Error
+
+# Imbalanced expression (more operators than operands)
+"3 4 + -"
+Error
+
+# Imbalanced expression (more operands than operators)
+"3 4 5 +"
+Error
+
+# Empty input
+""
+Error
+
+# Division result as a floating point
+"5 2 /"
+2
+
+# Multiple nested operations
+"3 5 8 * 7 + *"
+141
+
+# Invalid token with operator-like character
+"2 3 $ +"
+Error
+
+# Mismatched parentheses (not supported in RPN)
+"2 ( 3 4 + )"
+Error
+
+# Non-numeric large token
+"2 e5 +"
+Error
+
+# Negative operand
+"-3 5 +"
+2
+
+# Complex nested operation with negatives
+"2 -3 5 + * 10 -"
+-20
