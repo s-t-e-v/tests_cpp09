@@ -33,16 +33,11 @@ while IFS= read -r line; do
         ((nb_tests++))
 
         # Run the RPN program and capture its output
-        actual_output=$($BINARY "$arg" 2> /dev/null)
+        actual_output=$($BINARY "$arg" 2>&1)
 
-        # Boolean checks
-        is_expected_error=$([[ "$expected_output" == "Error" && \
-                               "$actual_output" == Error* ]])
-        is_exact_match=$([[ "$expected_output" != "Error" && \
-                            "$actual_output" == "$expected_output" ]])
-
-        # Evaluate result
-        if $is_expected_error || $is_exact_match; then
+        # Check if the output matches the expected result
+        if { [[ "$expected_output" == "Error" && "$actual_output" == Error* ]]; } || \
+           { [[ "$expected_output" != "Error" && "$actual_output" == "$expected_output" ]]; }; then
             echo -ne "${GREEN} OK${END}"
             ((nb_passed++))
         else
