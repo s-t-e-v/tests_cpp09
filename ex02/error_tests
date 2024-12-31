@@ -1,0 +1,35 @@
+# empty input
+""
+
+# empty inputs
+"" ""
+
+# non-number element
+a
+
+# non-number element 2
+salut
+
+# list of non-number elements
+un deux trois
+
+# negative element
+"-1"
+
+# negative 0
+"-0"
+
+# list emppty elements in a list
+2 5 20 "" 42 "" 0
+
+# list non-number elements in a list
+1 2 trois 4 cinq
+
+# negative element in a list
+2 5 20 "-1" 42 "-123" 0
+
+# integer overflow
+2 7 3 2147483648 42 0
+
+# integer underflow
+2 7 3 -2147483649 42 0
