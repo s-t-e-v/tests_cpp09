@@ -16,8 +16,8 @@
 # list of 7 elements
 90 2 10 900 42 0 29
 
-# max int
-2147483647
+# max uint
+4294967295
 
-# max int in a list
-42 2 67 2147483647 0
+# max uint in a list
+42 2 67 4294967295 0

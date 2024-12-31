@@ -28,8 +28,5 @@ un deux trois
 # negative element in a list
 2 5 20 "-1" 42 "-123" 0
 
-# integer overflow
-2 7 3 2147483648 42 0
-
-# integer underflow
-2 7 3 -2147483649 42 0
+# positive integer overflow
+2 7 3 4294967296 42 0
