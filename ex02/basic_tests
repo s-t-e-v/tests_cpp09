@@ -13,6 +13,9 @@
 # already sorted list
 1 2 3 4 5
 
+# reverse sorted list
+5 4 3 2 1
+
 # list of 7 elements
 90 2 10 900 42 0 29
 
@@ -41,7 +44,7 @@
 1 2 3 4 5 6 7 8 9 10 1 2 3 4 5 6 7 8 9 10
 
 # negative 0
-"-0"
+-0
 
 # max uint
 4294967295

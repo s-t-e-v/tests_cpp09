@@ -21,18 +21,72 @@ NB_RANDOM_TESTS=20
 # TODO: Maybe add timeout for each test
 
 
+tests_file="$TESTS_DIR/tests"
+
 # ---- Functions ----
+
+test() {
+    local test_file="$1"
+    local expected_output
+
+    if [[ "$test_file" == *error* ]]; then
+        echo -e "${BOLD}---- Error tests ----${END}"
+        expected_output="1"
+    else
+        echo -e "${BOLD}---- Basic tests ----${END}"
+        expected_output="0"
+    fi
+
+    local nb_passed=0
+    local nb_tests=0
+
+    while IFS= read -r line; do
+        if [[ "$line" =~ ^# ]]; then
+            test_name="${line:2}"
+
+            read -r arg
+
+            echo -ne "Test: $test_name: ${YELLOW}$arg${END}"
+
+            ((nb_tests++))
+
+            # Run program
+            $BINARY $arg 2> /dev/null > /dev/null
+            local actual_output=$?
+
+            # Check if the output matches the expected result
+            if [[ $expected_output -eq $actual_output ]]; then
+                echo -ne "${GREEN} OK${END}"
+                ((nb_passed++))
+            else
+                echo -ne "${RED} KO${END}"
+            fi
+
+            echo ""
+        fi
+    done < "$TESTS_DIR/$test_file"
+
+    # Display results for the current test file
+    if [ $nb_passed -eq $nb_tests ]; then
+        echo -e "${GREEN}${nb_passed}/${nb_tests} tests passed${END}"
+    else
+        echo -e "${RED}${nb_passed}/${nb_tests} tests passed${END}"
+    fi
+
+    ((nb_tot_passed+=nb_passed))
+    ((nb_tot_tests+=nb_tests))
+
+    echo ""
+}
 
 
 # ---- Main ----
 
-
-tests_file="$TESTS_DIR/tests"
-
-
 # Basic valid tests
+test "basic_tests"
 
 # Error tests
+test "error_tests"
 
 # 100 different numbers tests
 
@@ -46,37 +100,14 @@ tests_file="$TESTS_DIR/tests"
 
 # 5000 numbers with duplicates tests
 
-while IFS= read -r line; do
-    if [[ "$line" =~ ^# ]]; then
-        test_name="${line:2}"
 
-        read -r arg
-        read -r expected_output
-
-        echo -ne "Test: $test_name: ${YELLOW}$arg${END} -> "
-        echo -ne "${CYAN}$expected_output${END}"
-
-        ((nb_tests++))
-
-        # Run the RPN program and capture its output
-        actual_output=$($BINARY "$arg" 2>&1)
-
-        # Check if the output matches the expected result
-        if { [[ "$expected_output" == "Error" && "$actual_output" == Error* ]]; } || \
-           { [[ "$expected_output" != "Error" && "$actual_output" == "$expected_output" ]]; }; then
-            echo -ne "${GREEN} OK${END}"
-            ((nb_passed++))
-        else
-            echo -ne "${RED} KO${END}"
-        fi
-
-        echo ""
-    fi
-done < "$tests_file"
-
-echo ""
 
 # Display general results
+
+echo ""
+echo "------------------- General results -------------------"
+echo ""
+
 if [ $nb_tot_passed -eq $nb_tot_tests ]; then
     echo -e "${GREEN}${nb_tot_passed}/${nb_tot_tests} tests passed${END}"
 else

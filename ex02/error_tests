@@ -14,7 +14,7 @@ salut
 un deux trois
 
 # negative element
-"-1"
+-1
 
 # list emppty elements in a list
 2 5 20 "" 42 "" 0
@@ -23,7 +23,7 @@ un deux trois
 1 2 trois 4 cinq
 
 # negative element in a list
-2 5 20 "-1" 42 "-123" 0
+2 5 20 -1 42 -123 0
 
 # positive integer overflow
 2 7 3 4294967296 42 0
