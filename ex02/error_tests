@@ -16,9 +16,6 @@ un deux trois
 # negative element
 "-1"
 
-# negative 0
-"-0"
-
 # list emppty elements in a list
 2 5 20 "" 42 "" 0
 
@@ -30,3 +27,24 @@ un deux trois
 
 # positive integer overflow
 2 7 3 4294967296 42 0
+
+# decimal number
+42.42
+
+# decimal number in a list
+2 5 20 42.42 42 0 21.21 10
+
+# negative decimal number
+-42.42
+
+# negative decimal number in a list
+2 5 20 -42.42 42 0 -21.21 10
+
+# negative decimal 0
+-0.0
+
+# element in scientific notation
+4.2e2
+
+# element in scientific notation in a list
+2 5 20 4.2e2 42 0 2.1e1 10
