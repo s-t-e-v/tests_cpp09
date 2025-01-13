@@ -22,6 +22,15 @@
 # list of 22 elements (emuminov example)
 11 2 17 0 16 8 6 15 10 3 21 1 18 9 14 19 12 5 4 20 13 7
 
+# list of 24 elements
+11 2 17 0 16 8 6 15 10 3 21 1 18 23 9 14 19 12 5 4 20 22 13 7
+
+# list of 30 elements with duplicates
+11 2 17 0 25 16 8 6 19 15 10 3 27 27 21 1 18 23 26 9 14 24 19 12 5 4 20 22 13 7 
+
+# list of 31 elements with duplicates
+11 2 17 0 25 16 8 6 19 15 10 3 27 27 21 1 18 23 26 28 9 14 24 19 12 5 4 20 22 13 7
+
 # list of 2 duplicates
 1 1
 
