@@ -88,7 +88,7 @@ randomized_tests () {
 
     echo -ne "Tests:"
     for i in $(seq 1 $nb_tests); do
-        local numbers=$(shuf -i 1-10000 -n $nb_numbers | tr '\n' ' ')
+        local numbers=$(shuf -i 1-100000 -n $nb_numbers | tr '\n' ' ')
 
         echo -ne " $i."
 
